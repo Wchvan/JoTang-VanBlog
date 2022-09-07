@@ -38,6 +38,7 @@ PreBtn.onclick = function(){
     }
     console.log(pre)
     SlideshowImgChange(pre);
+    SlideshowSelectChange(pre);
 }
 
 NextBtn.onclick = function(){
@@ -46,6 +47,7 @@ NextBtn.onclick = function(){
         next = 0;
     }
     SlideshowImgChange(next);
+    SlideshowSelectChange(next);
 }
 
 function SlideshowSelectChange(temp){
