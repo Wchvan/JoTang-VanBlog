@@ -1,0 +1,162 @@
+@import url(//at.alicdn.com/t/c/font_3633514_6egijvata3g.css);
+
+/* 公用样式 */
+
+body{
+    background: url(../img/bg1.png) no-repeat fixed;
+    background-size: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif!important ;
+}
+
+.left{
+    float: left;
+}
+
+.clearfix::after{
+    display: block;
+    content: "";
+    clear: both;
+}
+
+/* 公用样式结束 */
+
+/* 首页头部 */
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: #121212;
+    opacity: 0.8;
+    border-radius: 5px;
+    clear: both;
+    overflow: hidden;
+}
+
+.header span{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    color: #999;
+    line-height: 50px;
+    height: 50px;
+}
+
+/* 首页头部结束 */
+
+/* 主区域左侧 */
+
+.main .left{
+    width:260px ;
+    position: fixed;
+    top: 70px;
+    border-radius:20px ;
+    left: 200px;
+    height: 800px;
+    background-color: #121212;
+    opacity: 0.8;
+}
+
+.main .left .img{
+    margin-top: 220px;
+    margin-bottom: 10px;
+}
+
+.main .left .img img{
+    width: 225px;
+    height: 150px;
+    padding-left: 17.5px;
+}
+.main .left .content ul li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 17.5px;
+}
+
+.main .left .content ul li span{
+    font-size: 18px;
+    text-align: center;
+    color: #999;
+}
+
+/* 主区域左侧结束 */
+
+/* 中间主区域 */
+
+.main .center{
+    width: 900px;
+    margin-top: 20px;
+    margin-left: 500px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.main .center .introduce{
+    background-color: #121212;
+    border-radius: 5em;
+    opacity: 0.8;
+    width: 850px;
+    height: 300px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    color: #fff;
+}
+
+.main .center .introduce .topic{
+    padding-top: 110px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.main .center .introduce .date{
+    margin-bottom: 10px;
+}
+
+.main .center .dream{
+    background-color: #121212;
+    border-radius: 5em;
+    opacity: 0.8;
+    width: 850px;
+    height: 300px;
+    margin-bottom: 50px;
+    padding-left: 30px;
+    color: #fff;
+}
+
+.main .center .dream .words{
+    padding-top: 100px;
+    padding-right: 10px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.main .center .todo-list{
+    background-color: #121212;
+    border-radius: 5em;
+    opacity: 0.8;
+    width: 850px;
+    height: 300px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    color: #fff;
+}
+
+.main .center .todo-list .list{
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main .center .todo-list .list span{
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.main .center .todo-list .list ul li{
+    display: block;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.main .center .todo-list .list ul li::before{
+    content: "----  ";
+}
+/* 主区域结束 */
