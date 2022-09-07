@@ -43,7 +43,7 @@ PreBtn.onclick = function(){
 
 NextBtn.onclick = function(){
     let next = Math.floor( -SlideshowImgMove / 500) + 1;
-    if(next == 7){
+    if(next == 6){
         next = 0;
     }
     SlideshowImgChange(next);
