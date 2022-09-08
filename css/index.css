@@ -1,4 +1,4 @@
-@import url(//at.alicdn.com/t/c/font_3633514_el8idbtd9tk.css);
+@import url(//at.alicdn.com/t/c/font_3633514_9fyeyxg11vk.css);
 
 /* 公用样式 */
 
@@ -129,15 +129,21 @@ body{
 }
 
 .main .aside-left .Studyshow .StudyshowPassage .StudyshowPassageItem{
-    width: 250px;
     height: 30px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 30px;
     color: #fff;
     padding-left: 5px;
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+.main .aside-left .Studyshow .StudyshowPassage .StudyshowPassageItem .icon-shanchu{
+    font-size: 20px;
+    color: #fff;
+    float: right;
+    margin-right: 1px;
 }
 
 .main .aside-left .Studyshow .StudyshowPassage .StudyshowPassageItem::before{

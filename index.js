@@ -99,6 +99,24 @@ function StudyshowPassageObj(topic,content){
 
     this.viewContent.className = "StudyshowPassageItem "
     this.viewContent.textContent = this.topic + "  " + this.date.getFullYear() + "/" + this.date.getMonth() +"/" + this.date.getDate() ;
+
+    this.btn = document.createElement('span');
+    this.btn.className = "iconfont icon-shanchu";
+    this.viewContent.appendChild(this.btn);
+
+    this.viewContent.firstElementChild.onclick = function(){
+        this.parentElement.onclick = function(){
+            return false;
+        }
+        if(StudyshowPassageArea){
+            StudyshowPassageArea.display = 'none';
+            for(var i = 1;i < CenterItems.length;i++){
+                CenterItems[i].style.display = 'block';
+            }
+        }
+        this.parentElement.remove()
+    }
+
     StudyshowPassageList.append(this.viewContent);
 }
 
@@ -115,6 +133,9 @@ StudyshowSubmitBtn.onclick = function(){
 function StudyshowPassageItemClick(){
     for(var i = 1;i < CenterItems.length;i++){
         CenterItems[i].style.display = 'none';
+        if(StudyshowPassageArea){
+            StudyshowPassageArea.remove()
+        }
     }
 
     // 选择当前的文章对象
