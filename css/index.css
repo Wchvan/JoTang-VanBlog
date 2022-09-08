@@ -124,11 +124,12 @@ body{
 }
 
 .main .aside-left .Studyshow .StudyshowPassage{
-    max-height: 500px;
+    max-height: 300px;
+    overflow: auto;
 }
 
 .main .aside-left .Studyshow .StudyshowPassage .StudyshowPassageItem{
-    width: 260px;
+    width: 250px;
     height: 30px;
     border-radius: 5px;
     font-size: 20px;
@@ -174,6 +175,62 @@ body{
     font-size: 15px;
     box-sizing: border-box;
     border: 1px solid #fff;
+}
+
+.StudyshowPassageArea{
+    background-color: #121212;
+    border-radius: 5em;
+    opacity: 0.8;
+    width: 850px;
+    height: 900px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    color: #fff;
+    position: relative;
+}
+
+.StudyshowPassageTopic{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 3em;
+    color: #fff;
+    width: 850px;
+    text-align: center;
+}
+
+.StudyshowPassageContent{
+    height: 750px;
+    line-height: 35px;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.StudyshowPassageHomeBtn{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    bottom: 10px;
+    left: 335px;
+    background-color: #b31e1a;
+    color: #fff;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
+.StudyshowPassageDelBtn{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    bottom: 10px;
+    right: 335px;
+    background-color: #b31e1a;
+    color: #fff;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
 }
 
 #StudyshowSubmit .StudyshowSubmitBtn{
