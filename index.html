@@ -19,9 +19,9 @@
 
 
     <div class="main">
-        <div class="left">
+        <div class="aside-left">
             <!-- 左侧的个人信息 -->
-            <div class="PersonalProfile">
+            <div class="PersonalProfile left-item">
                 <div class="img">
                     <img src="./img/Me.JPG" alt="">
                 </div>
@@ -39,13 +39,26 @@
                 </div>
             </div>
 
-            <!-- 左侧的轮播图 -->
-            
+            <!-- 左侧的学习记录展示区 -->
+            <div class="Studyshow left-item">
+                <div class="Studyshowhead">
+                    学习记录展示区
+                </div>
+                <div class="StudyshowPassage">
+
+                </div>
+                <form action="" id = "StudyshowSubmit" name="StudyshowSubmit">
+                    <input type="text" name="topic" class="StudyshowSubmitTopic" placeholder="请输入你的标题">
+                    <textarea name="content" id="" cols="30" rows="10"  class="StudyshowSubmitContent" placeholder="请输入你的标题"></textarea>
+                    <input type="button"  class="StudyshowSubmitBtn" value="提交学习记录"/>
+                </form>
+            </div>
         </div>
         
         
-        <!-- 中间放一些文章 -->
+        <!-- 中间 -->
         <div class="center">
+            <!-- 个人介绍 -->
             <div class="introduce center-item">
                 <div class="topic">
                     Welcome to Van's Channel
@@ -60,6 +73,8 @@
                     你好这里是 Van
                 </div>
             </div>
+
+             <!-- 轮播图 -->
             <div class="Slideshow center-item">
                 <div class="img">
                     <ul>
@@ -84,13 +99,16 @@
                         <li>6</li>
                     </ul>
                 </div>
-                
             </div>
+
+            <!-- 梦想 -->
             <div class="dream center-item">
                 <div class="words">
                     我是武超凡，是互联网加1202班的学生，大一因为我的爱好是篮球，所以其实一整年更多是在训练篮球，当时也没很在意说一定要加个工作室之类的，当然也没怎么学技术，但是当大一结束之后，有学弟报考计算机专业问我这个专业怎么样的时候，我才发现其实我对这个领域并不太懂，一整年下来其实也没学到啥，可能也就程算考试的时候觉得自己好像会一些，但是当我打算去做一个项目的时候我发现我什么技术也没有，所以我趁暑假学了些前端，接下来我不敢说我以后一定要当一个前端工程师，但我希望我能学到更多的技术，成为一个技术大佬。
                 </div>
             </div>
+
+            <!-- todolist -->
             <div class="todo-list center-item">
                 <div class="list">
                     <span>TODO</span>

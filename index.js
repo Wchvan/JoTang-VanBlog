@@ -72,3 +72,33 @@ for(let i = 0;i < SlideshowSelect.length;i++){
     }
 }
 
+// 学习记录区域
+
+var StudyshowPassageList = document.querySelector(".StudyshowPassage");
+var StudyshowSubmitBtn = document.querySelector(".StudyshowSubmitBtn");
+var StudyshowPassageItemList = new Array();
+
+
+function StudyshowPassageObj(topic,content){
+    this.topic = topic;
+    this.content = content;
+    this.date = new Date()
+
+    this.viewContent = document.createElement('div');
+    this.viewContent.className = "StudyshowPassageItem "
+    this.viewContent.textContent = this.topic + "  " + this.date.getFullYear() + "/" + this.date.getMonth() +"/" + this.date.getDate() ;
+    StudyshowPassageList.append(this.viewContent);
+}
+
+StudyshowPassageObj.prototype
+
+StudyshowSubmitBtn.onclick = function(){
+    var StudyshowPassageItem = new StudyshowPassageObj(document.StudyshowSubmit.topic.value,document.StudyshowSubmit.content.value);
+    StudyshowPassageItemList.push(StudyshowPassageItem);
+    for(var i = 0;i < StudyshowPassageItemList.length;i++){
+        StudyshowPassageItemList[i].viewContent.onclick = function(){
+        }
+    }
+}
+
+

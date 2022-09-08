@@ -42,3 +42,10 @@ table {
    border-spacing: 0;
 }
 
+
+/* 重置文本框 */
+input{
+   border: none;
+   outline: none;
+   outline-offset: 0;
+}
