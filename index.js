@@ -99,6 +99,7 @@ function StudyshowPassageObj(topic,content){
     this.topic = topic;
     this.content = content;
     this.date = new Date();
+    this.flag = 1;// 用于判断该元素是否被删除
 
     this.viewContent = document.createElement('div');
 
@@ -190,6 +191,7 @@ function StudyshowPassageItemClick(){
             CenterItems[i].style.display = 'block';
         }
         StudyshowPassageItemSelected.viewContent.remove();
+        StudyshowPassageItemSelected.flag = 0;
     }
 }
 
@@ -206,6 +208,7 @@ function StudyshowPassageObjDelBtn(){
             }
         }
         this.parentElement.remove()
+        StudyshowPassageItemList[this.index].flag = 0;
     }else if(this.flag == 1){
         this.style.backgroundColor = 'red';
         StudyshowPassageDelItemList.push(StudyshowPassageItemList[this.index]);
@@ -221,7 +224,9 @@ function StudyshowPassageObjDelBtn(){
 
 
 // 批量删除按钮
-StudyshowPassageDelSomeBtn.onclick = function(){
+StudyshowPassageDelSomeBtn.onclick = StudyshowPassageDelSome;
+
+function StudyshowPassageDelSome(){
     StudyshowPassageDelFlag = 1;
     if(!StudyshowPassageDelSomeFlag){
         for(var i = 0; i < StudyshowPassageItemList.length; i++){
@@ -240,6 +245,7 @@ StudyshowPassageDelSomeBtn.onclick = function(){
         }
         for(var i = 0;i< StudyshowPassageDelItemList.length;i++){
             StudyshowPassageDelItemList[i].viewContent.remove();
+            StudyshowPassageDelItemList[i].flag = 0;
         }
         for(var i = 0; i < StudyshowPassageItemList.length; i++){
             if(StudyshowPassageItemList[i].viewContent){
@@ -254,16 +260,18 @@ StudyshowPassageDelSomeBtn.onclick = function(){
 // 排序按钮功能
 StudyshowPassageSortBtn.onclick = function(){
     StudyshowPassageList.innerHTML='<div class="iconfont icon-piliangshanchu">批量删除</div>';
+    StudyshowPassageDelSomeBtn = document.querySelector(".icon-piliangshanchu")
+    StudyshowPassageDelSomeBtn.onclick = StudyshowPassageDelSome;
     if(!StudyshowPassageSortFlag){
         for(var i = StudyshowPassageItemList.length - 1; i >= 0;i--){
-            if(StudyshowPassageItemList[i].viewContent){
+            if(StudyshowPassageItemList[i].flag){
                 StudyshowPassageList.appendChild(StudyshowPassageItemList[i].viewContent);
             }
         }
         StudyshowPassageSortFlag = 1;
     }else{
         for(var i = 0; i < StudyshowPassageItemList.length;i++){
-            if(StudyshowPassageItemList[i].viewContent){
+            if(StudyshowPassageItemList[i].flag){
                 StudyshowPassageList.appendChild(StudyshowPassageItemList[i].viewContent);
             }
         }
