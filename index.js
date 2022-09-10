@@ -1,7 +1,6 @@
 // 全局变量
 var CenterItems = document.getElementsByClassName('center-item');
-var Center = document.getElementsByClassName('center')
-
+var Center = document.getElementsByClassName('center');
 
 // 轮播图
 var SlideshowImgMove = 0;
@@ -89,9 +88,33 @@ var StudyshowPassageDelSomeBtn = document.querySelector(".icon-piliangshanchu")
 var StudyshowPassageItemList = new Array();
 var StudyshowPassageArea = null; // 右侧展示文章的区域
 var StudyshowPassageDelItemList = new Array(); // 存放批量删除的对象
+var passagecount = parseInt(localStorage.getItem("passagecount")) // 读取之前的对象列表长度
 
 var StudyshowPassageDelSomeFlag = 0; // 用于判定批量删除两次按下不同的事件
 var StudyshowPassageSortFlag = 0; // 用于排序的判定
+
+// 获取本地存储信息,导进之前写过的文章
+for(var i = 0; i < passagecount; i++){
+    if(localStorage.getItem('StudyshowPassage' + i)){
+        let item = JSON.parse(localStorage.getItem('StudyshowPassage' + i));
+        if(item.flag ==1){
+            let passage = new StudyshowPassageObj(item.topic,item.content);
+            StudyshowPassageItemList.push(passage)
+            passage.viewContent.index = StudyshowPassageItemList.length - 1;
+            passage.btn.index = passage.viewContent.index;
+            passage.viewContent.onclick = StudyshowPassageItemClick;
+            item = JSON.stringify(passage);
+            localStorage['StudyshowPassage'+ passage.viewContent.index] = item;
+        }
+    }
+}
+
+// 清除本地存储中没用的数据
+for(i = StudyshowPassageItemList.length; i < passagecount; i++){
+    if(localStorage.getItem('StudyshowPassage' + i)){
+        localStorage.removeItem('StudyshowPassage' + i)
+    }
+}
 
 // 建立一个对象用于存储学习记录
 function StudyshowPassageObj(topic,content){
@@ -130,6 +153,15 @@ StudyshowSubmitBtn.onclick = function(){
     // 获取当前记录在数组中的索引值
     StudyshowPassageItem.viewContent.index = StudyshowPassageItemList.length - 1;
     StudyshowPassageItem.btn.index = StudyshowPassageItem.viewContent.index;
+    
+    // 对象存储到Local Storage
+    let item = JSON.stringify(StudyshowPassageItem)
+    localStorage.setItem('StudyshowPassage'+ StudyshowPassageItem.viewContent.index,item)
+    
+    // 数组总长度记录到Local Storage
+    let length = StudyshowPassageItemList.length ;
+    localStorage.setItem('passagecount',length)
+
     StudyshowPassageItem.viewContent.onclick = StudyshowPassageItemClick;
 }
 
@@ -190,8 +222,11 @@ function StudyshowPassageItemClick(){
         for(var i = 1;i < CenterItems.length;i++){
             CenterItems[i].style.display = 'block';
         }
-        StudyshowPassageItemSelected.viewContent.remove();
+        
         StudyshowPassageItemSelected.flag = 0;
+        let item = JSON.stringify(StudyshowPassageItemSelected);
+        localStorage['StudyshowPassage' +  StudyshowPassageItemSelected.viewContent.index] = item;
+        StudyshowPassageItemSelected.viewContent.remove();
     }
 }
 
@@ -207,8 +242,11 @@ function StudyshowPassageObjDelBtn(){
                 CenterItems[i].style.display = 'block';
             }
         }
-        this.parentElement.remove()
         StudyshowPassageItemList[this.index].flag = 0;
+        let item = JSON.stringify(StudyshowPassageItemList[this.index]);
+        localStorage['StudyshowPassage' +  this.index] = item;
+        this.parentElement.remove()
+        
     }else if(this.flag == 1){
         this.style.backgroundColor = 'red';
         StudyshowPassageDelItemList.push(StudyshowPassageItemList[this.index]);
@@ -244,8 +282,10 @@ function StudyshowPassageDelSome(){
             }
         }
         for(var i = 0;i< StudyshowPassageDelItemList.length;i++){
-            StudyshowPassageDelItemList[i].viewContent.remove();
             StudyshowPassageDelItemList[i].flag = 0;
+            let item =  JSON.stringify(StudyshowPassageDelItemList[i]) ;
+            localStorage['StudyshowPassage'+StudyshowPassageDelItemList[i].viewContent.index] = item
+            StudyshowPassageDelItemList[i].viewContent.remove();
         }
         for(var i = 0; i < StudyshowPassageItemList.length; i++){
             if(StudyshowPassageItemList[i].viewContent){
