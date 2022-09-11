@@ -6,6 +6,7 @@ body{
     background: url(../img/bg.png) no-repeat fixed;
     background-size: 100% 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif!important ;
+    color: #fff
 }
 
 .aside-left{
@@ -40,8 +41,7 @@ body{
     width: 850px;
     height: 300px;
     margin-bottom: 30px;
-    padding-left: 30px;
-    color: #fff;
+    padding: 0px 30px;
 }
 
 /* 公用样式结束 */
@@ -81,6 +81,20 @@ body{
 
 .header .top .TopItem3{
     right: 10px;
+    cursor: pointer;
+}
+
+.header .top .ThemeColor{
+    position: absolute;
+    left: 45%;
+}
+
+.header .top .ThemeColor button{
+    width: 80px;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 5px;
     cursor: pointer;
 }
 /* 首页头部结束 */
@@ -133,7 +147,6 @@ body{
     height: 30px;
     line-height: 30px;
     font-size: 1.5em;
-    color: #fff;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
@@ -141,7 +154,6 @@ body{
 .main .aside-left .Studyshow .Studyshowhead .icon-paixu{
     position: absolute;
     font-size: 1.1em;
-    color: #fff;
     right: 5px;
     top: 2px;
     cursor: pointer;
@@ -153,7 +165,6 @@ body{
 }
 
 .main .aside-left .Studyshow .StudyshowPassage .icon-piliangshanchu{
-    color: #fff;
     margin-left: 10px;
     font-size: 18px;
     height: 30px;
@@ -168,7 +179,6 @@ body{
     border-radius: 5px;
     font-size: 17px;
     line-height: 30px;
-    color: #fff;
     padding-left: 5px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -176,7 +186,6 @@ body{
 
 .main .aside-left .Studyshow .StudyshowPassage .StudyshowPassageItem .icon-shanchu{
     font-size: 20px;
-    color: #fff;
     float: right;
     margin-right: 5px;
 }
@@ -229,15 +238,8 @@ body{
 }
 
 .StudyshowPassageArea{
-    background-color: #121212;
-    border-radius: 5em;
-    opacity: 0.8;
-    width: 850px;
-    height: 900px;
-    margin-bottom: 30px;
-    padding-left: 30px;
-    color: #fff;
     position: relative;
+    height: 900px;
 }
 
 .StudyshowPassageTopic{
@@ -246,16 +248,16 @@ body{
     height: 60px;
     line-height: 60px;
     font-size: 3em;
-    color: #fff;
     width: 850px;
     text-align: center;
 }
 
 .StudyshowPassageContent{
-    height: 750px;
+    height: 700px;
     line-height: 35px;
     font-size: 1.5em;
-    color: #fff;
+    overflow: auto;
+    word-break: break-all;
 }
 
 .StudyshowPassageHomeBtn{
@@ -265,7 +267,6 @@ body{
     bottom: 10px;
     left: 335px;
     background-color: #b31e1a;
-    color: #fff;
     border-radius: 10px;
     border: 0;
     cursor: pointer;
@@ -278,7 +279,6 @@ body{
     bottom: 10px;
     right: 335px;
     background-color: #b31e1a;
-    color: #fff;
     border-radius: 10px;
     border: 0;
     cursor: pointer;
@@ -290,7 +290,6 @@ body{
     margin-top: 3px;
     height: 30px;
     border-radius: 5px;
-    background-color: #fff;
     cursor: pointer;
 }
 
@@ -356,7 +355,6 @@ body{
     top:180px;
     left: 10px;
     cursor: pointer;
-    color: #fff;
 }
 
 .main .center .Slideshow .img  .NextBtn{
@@ -365,7 +363,6 @@ body{
     top:180px;
     right: 10px;
     cursor: pointer;
-    color: #fff;
 }
 
 .main .center .Slideshow .img .select {
@@ -381,7 +378,6 @@ body{
     background: #666;
     line-height: 30px;
     text-align: center;
-    color: #fff;
     float: left;
     margin-left: 5px;
     cursor: pointer;
@@ -420,7 +416,6 @@ body{
     width: 850px;
     height: 1000px;
     position: relative;
-    color: #fff;
 }
 
 .LeaveWordsArea .LeaveWordsTop .title{
@@ -430,7 +425,6 @@ body{
     height: 60px;
     line-height: 60px;
     font-size: 3em;
-    color: #fff;
     width: 100%;
     text-align: center;
 }
@@ -447,7 +441,6 @@ body{
     height: 25px;
     border-radius: 6px;
     border: none;
-    background-color: #fff;
 }
 
 #LeaveWordsSelect .submit{
@@ -455,7 +448,6 @@ body{
     height: 25px;
     border-radius: 6px;
     border: none;
-    background-color: #fff;
     cursor: pointer;
 }
 
@@ -477,7 +469,12 @@ body{
     width: 150px;
     height: 20px;
     border-radius: 5px;
-    background-color: #fff;
+}
+
+#LeaveWords .number{
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
 }
 
 #LeaveWords select{
@@ -485,7 +482,6 @@ body{
     height: 25px;
     border-radius: 6px;
     border: none;
-    background-color: #fff;
 }
 
 #LeaveWords .submit{
@@ -493,7 +489,6 @@ body{
     height: 25px;
     border-radius: 6px;
     border: none;
-    background-color: #fff;
     cursor: pointer;
 }
 
@@ -509,7 +504,6 @@ body{
 
 .LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockOwner{
     margin-left: 10px;
-    color: #fff;
     font-size: 20px;
 }
 
@@ -517,7 +511,6 @@ body{
     font-size: 18px;
     line-height: 22px;
     margin: 10px 25px;
-    color: #fff;
 }
 
 .LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockTxt  .LeaveWordsBlockBtn{

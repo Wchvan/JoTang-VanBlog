@@ -9,13 +9,18 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 </head>
-<body>
+<body id="Body">
     <!-- 头部 写标签 -->
     <header class="header">
         <div class="top">
             <span class="TopItem1">Van's Blog</span>
             <span class="TopItem2">首页</span>
             <span class="TopItem3">留言板</span>
+            <div class="ThemeColor">
+                <button class="origin">原始主题</button>
+                <button class="black">深色主题</button>
+                <button class="white">浅色主题</button>
+            </div> 
         </div>
     </header>
 
@@ -151,6 +156,7 @@
                 <form action="" id="LeaveWords" name="LeaveWords">
                     <textarea name="content" id="" cols="30" rows="10" class="content" placeholder="请输入你的留言内容"></textarea>
                     <input type="text" placeholder="请输入你的名字" class="name" name="name">
+                    <input type="text" placeholder="请输入你的学号:" class="number" name="number">
                     <select name="gender" class="gender">
                         <option value="男">男 </option>
                         <option value="女">女</option>
@@ -160,7 +166,6 @@
                         <option value="大二">大二</option>
                         <option value="大三">大三</option>
                         <option value="大四">大四</option>
-                        <option value="其他">其他</option>
                     </select>
                     <input type="button" class="submit" value="确认">
                 </form>

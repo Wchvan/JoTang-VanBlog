@@ -1,11 +1,18 @@
 // 全局变量
 var CenterItems = document.getElementsByClassName('center-item');
 var Center = document.getElementsByClassName('center');
+var Body = document.getElementById("Body")
+var LeftItems = document.getElementsByClassName('left-item')
+var ThemeFlag = 0;
 
 // 导航栏的变量
 var LeaveWordsArea = document.querySelector(".LeaveWordsArea")
 var HomeBtn = LeaveWordsBtn = document.querySelector(".header .top .TopItem2");
 var LeaveWordsBtn = document.querySelector(".header .top .TopItem3")
+var ThemeBtn1 = document.querySelector(".ThemeColor .origin")
+var ThemeBtn2 = document.querySelector(".ThemeColor .black")
+var ThemeBtn3 = document.querySelector(".ThemeColor .white")
+
 
 /* 返回首页 */
 HomeBtn.onclick = function(){
@@ -28,6 +35,53 @@ LeaveWordsBtn.onclick = function(){
     }
 }
 
+
+/* 选取主题 */
+ThemeBtn1.onclick = function(){
+    ThemeFlag  = 0;
+    Body.style.color = "#fff";
+    Body.style.background = "url(./img/bg.png) no-repeat fixed"
+    for(var i = 0; i < CenterItems.length ;i ++){
+        CenterItems[i].style.background = 'rgba(18,18,18,0.8)';
+    }
+    for(var i = 0; i < LeftItems.length ;i ++){
+        LeftItems[i].style.background = 'rgba(18,18,18,0.8)';
+    }
+    StudyshowPassageArea.style.background = 'rgba(18,18,18,0.8)';
+    LeaveWordsArea.style.backgroundColor  = 'rgba(18,18,18,0.8)';
+    
+    
+}
+
+ThemeBtn2.onclick = function(){
+    ThemeFlag = 1;
+    Body.style.color = "#4f92e0";
+    Body.style.background = " #121212 no-repeat fixed"
+    for(var i = 0; i < CenterItems.length ;i ++){
+        CenterItems[i].style.background = 'rgba(193,76,59,0.8)';
+    }
+    for(var i = 0; i < LeftItems.length ;i ++){
+        LeftItems[i].style.background = 'rgba(193,76,59,0.8)';
+    }
+    StudyshowPassageArea.style.background = 'rgba(193,76,59,0.8)';
+    LeaveWordsArea.style.background = 'rgba(193,76,59,0.8)';
+    
+}
+
+ThemeBtn3.onclick = function(){
+    ThemeFlag = 2;
+    Body.style.color = "#121212";
+    Body.style.background = " #639a72 no-repeat fixed"
+    for(var i = 0; i < CenterItems.length ;i ++){
+        CenterItems[i].style.background = 'rgba(110, 86, 76, 0.8)';
+    }
+    for(var i = 0; i < LeftItems.length ;i ++){
+        LeftItems[i].style.background = 'rgba(110, 86, 76, 0.8)';
+    }
+    StudyshowPassageArea.style.background = 'rgba(110, 86, 76, 0.8)';
+    LeaveWordsArea.style.background = 'rgba(110, 86, 76, 0.8)';
+    
+}
 
 
 /* 轮播图 */
@@ -221,8 +275,19 @@ function StudyshowPassageItemClick(){
     var StudyshowPassageItemSelected = StudyshowPassageItemList[this.index];
 
     // 展示区域
+    
     StudyshowPassageArea = document.createElement('div');
-    StudyshowPassageArea.className = 'StudyshowPassageArea';
+    StudyshowPassageArea.className = 'StudyshowPassageArea center-item';
+    if(ThemeFlag == 0){
+        StudyshowPassageArea.style.background = '#121212';
+        StudyshowPassageArea.style.opacity = '0.8';
+    }else if(ThemeFlag == 1){
+        StudyshowPassageArea.style.background = '#c14c3b';
+        StudyshowPassageArea.style.opacity = '0.8';
+    }else if(ThemeFlag == 2){
+        StudyshowPassageArea.style.background = 'rgba(110, 86, 76, 0.8)';
+    }
+
     Center[0].append(StudyshowPassageArea);
 
     // 创建展示标题
@@ -446,7 +511,66 @@ function LeaveWordsBlockDel(){
 
 // 表单提交事件
 LeaveWordsSubBtn.onclick = function(){
-    var LeaveWordsItem = new LeaveWordsObj(document.LeaveWords.name.value,document.LeaveWords.gender.value,document.LeaveWords.grade.value,document.LeaveWords.content.value);
+    
+    let name = document.LeaveWords.name.value;
+    let gender = document.LeaveWords.gender.value;
+    let grade = document.LeaveWords.grade.value;
+    let content = document.LeaveWords.content.value;
+    let number = document.LeaveWords.number.value;
+
+    // 验证操作 2021091202009
+    if(number.length != 13){
+        alert("你输错了学号！")
+        return ;
+    }else{
+        if(number.substr(0,4) != '2019' && number.substr(0,4) != '2020' && number.substr(0,4) != '2021' && number.substr(0,4) != '2022'){
+            alert("你输错了学号！1")
+            return ;
+        }
+        if(number.substr(0,4) == '2019' && grade != "大四"){
+            alert("你输错了学号！2")
+            return ;
+        }
+        if(number.substr(0,4) == '2020' && grade != "大三"){
+            alert("你输错了学号！3")
+            return ;
+        }
+        if(number.substr(0,4) == '2021' && grade != "大二"){
+            alert("你输错了学号！4")
+            return ;
+        }
+        if( number.substr(0,4) == '2022' && grade != "大一"){
+            alert("你输错了学号！5")
+            return ;
+        }
+
+        if(number.substr(4,2) != '09'){
+            alert("你输错了学号！6")
+            return ;
+        }
+
+        if(number.substr(6,2) != '09' && number.substr(6,2) != '12' && number.substr(6,2) != '16'){
+            alert("你输错了学号！7")
+            return ;
+        }
+
+        if(number.substr(6,2) == '09' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 30 )){
+            alert("你输错了学号！8")
+            return ;
+        }
+
+        if(number.substr(6,2) == '12' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 3)){
+            alert("你输错了学号！9")
+            return ;
+        }
+
+        if( number.substr(6,2) == '16'&& (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 6 ) && grade != "大一"){
+            alert("你输错了学号！10")
+            return ;
+        }
+    }
+
+    var LeaveWordsItem = new LeaveWordsObj(name,gender,grade,content);
     LeaveWordsItemList.push(LeaveWordsItem);
     LeaveWordsItem.btn.index = LeaveWordsItemList.length - 1;
     LeaveWordsItem.viewContent.index = LeaveWordsItemList.length - 1;
