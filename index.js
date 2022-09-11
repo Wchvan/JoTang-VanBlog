@@ -2,7 +2,35 @@
 var CenterItems = document.getElementsByClassName('center-item');
 var Center = document.getElementsByClassName('center');
 
-// 轮播图
+// 导航栏的变量
+var LeaveWordsArea = document.querySelector(".LeaveWordsArea")
+var HomeBtn = LeaveWordsBtn = document.querySelector(".header .top .TopItem2");
+var LeaveWordsBtn = document.querySelector(".header .top .TopItem3")
+
+/* 返回首页 */
+HomeBtn.onclick = function(){
+    LeaveWordsArea.style.display = 'none';
+    if(StudyshowPassageArea){
+        StudyshowPassageArea.remove();
+    }
+    for(var i = 0; i < CenterItems.length;i++){
+        CenterItems[i].style.display = 'block';
+    }
+    Center[0].style.display = 'block';
+}
+
+/* 打开留言板页面 */
+LeaveWordsBtn.onclick = function(){
+    LeaveWordsArea.style.display = 'block';
+    Center[0].style.display  = 'none';
+    if(StudyshowPassageArea){
+        StudyshowPassageArea.remove();
+    }
+}
+
+
+
+/* 轮播图 */
 var SlideshowImgMove = 0;
 var SlideshowImgMoveSpeed = 30;
 var SlideshowTimer = null;
@@ -79,7 +107,11 @@ for(let i = 0;i < SlideshowSelect.length;i++){
     }
 }
 
-// 学习记录区域
+
+
+
+
+/* 学习记录区域 */
 
 var StudyshowPassageList = document.querySelector(".StudyshowPassage");
 var StudyshowSubmitBtn = document.querySelector(".StudyshowSubmitBtn");
@@ -98,7 +130,7 @@ for(var i = 0; i < passagecount; i++){
     if(localStorage.getItem('StudyshowPassage' + i)){
         let item = JSON.parse(localStorage.getItem('StudyshowPassage' + i));
         if(item.flag ==1){
-            let passage = new StudyshowPassageObj(item.topic,item.content);
+            let passage = new StudyshowPassageObj(item.topic,item.content,item.date);
             StudyshowPassageItemList.push(passage)
             passage.viewContent.index = StudyshowPassageItemList.length - 1;
             passage.btn.index = passage.viewContent.index;
@@ -117,11 +149,16 @@ for(i = StudyshowPassageItemList.length; i < passagecount; i++){
 }
 
 // 建立一个对象用于存储学习记录
-function StudyshowPassageObj(topic,content){
+function StudyshowPassageObj(topic,content,date){
     // 基本属性设置
     this.topic = topic;
     this.content = content;
-    this.date = new Date();
+    if(date){
+        this.date = date;
+    }else{
+        this.date = new Date();
+        this.date = this.date.getFullYear() + "/" + this.date.getMonth() + "/" +this.date.getDate() + "";
+    }
     this.flag = 1;// 用于判断该元素是否被删除
 
     this.viewContent = document.createElement('div');
@@ -129,7 +166,7 @@ function StudyshowPassageObj(topic,content){
     this.viewContent.index = 0; // 用于确定该对象在数组的索引
 
     this.viewContent.className = "StudyshowPassageItem "
-    this.viewContent.textContent = this.topic + "  " + this.date.getFullYear() + "/" + this.date.getMonth() +"/" + this.date.getDate() ;
+    this.viewContent.textContent = this.topic + "  " + this.date ;
 
     // 按钮的设置
     this.btn = document.createElement('span');
@@ -171,6 +208,8 @@ function StudyshowPassageItemClick(){
 
     
     // 把右侧区域隐藏除了头部 
+    LeaveWordsArea.style.display = 'none';
+    Center[0].style.display = 'block';
     for(var i = 1;i < CenterItems.length;i++){
         CenterItems[i].style.display = 'none';
         if(StudyshowPassageArea){
@@ -211,15 +250,17 @@ function StudyshowPassageItemClick(){
     // 为按钮添加事件
     StudyshowPassageHomeBtn.onclick = function(){
         StudyshowPassageArea.remove();
-        for(var i = 1;i < CenterItems.length;i++){
+        for(var i = 0;i < CenterItems.length;i++){
             CenterItems[i].style.display = 'block';
         }
     }
     
     // 删除之后默认返回首页
     StudyshowPassageDelBtn.onclick = function(){
+        LeaveWordsArea.style.display = 'none';
         StudyshowPassageArea.remove();
-        for(var i = 1;i < CenterItems.length;i++){
+        Center[0].style.display = 'block';
+        for(var i = 0;i < CenterItems.length;i++){
             CenterItems[i].style.display = 'block';
         }
         
@@ -237,7 +278,9 @@ function StudyshowPassageObjDelBtn(){
     }
     if(this.flag == 0){
         if(StudyshowPassageArea){
-            StudyshowPassageArea.display = 'none';
+            LeaveWordsArea.style.display = 'none';
+            StudyshowPassageArea.remove();
+            Center[0].style.display = 'block';
             for(var i = 1;i < CenterItems.length;i++){
                 CenterItems[i].style.display = 'block';
             }
@@ -275,8 +318,9 @@ function StudyshowPassageDelSome(){
         }
         StudyshowPassageDelSomeFlag = 1;
     }else{
+        LeaveWordsArea.style.display = 'none';
         if(StudyshowPassageArea){
-            StudyshowPassageArea.display = 'none';
+            StudyshowPassageArea.remove();
             for(var i = 1;i < CenterItems.length;i++){
                 CenterItems[i].style.display = 'block';
             }
@@ -316,6 +360,143 @@ StudyshowPassageSortBtn.onclick = function(){
             }
         }
         StudyshowPassageSortFlag = 0;
+    }   
+}
+
+
+
+
+
+/* 留言板 */
+
+
+var LeaveWordsSubBtn = document.querySelector("#LeaveWords .submit");
+var LeaveWordsAreaMain = document.querySelector(".LeaveWordsMain");
+var LeaveWordsSelectBtn = document.querySelector("#LeaveWordsSelect .submit")
+
+var leavewordscount = localStorage.getItem("leavewordscount");
+var LeaveWordsItemList = new Array();
+
+// 读取之前的留言记录
+for(var i = 0; i < leavewordscount;i++){
+    if(localStorage.getItem("leavewords" + i)){
+        let item = JSON.parse(localStorage.getItem("leavewords" + i));
+        if(item.flag == 1){
+            let temp = new LeaveWordsObj(item.name,item.gender,item.grade,item.content,item.date);
+            LeaveWordsItemList.push(temp);
+            temp.viewContent.index = LeaveWordsItemList.length - 1;
+            temp.btn.index = LeaveWordsItemList.length - 1;
+            item = JSON.stringify(temp)
+            localStorage.setItem("leavewords" + temp.btn.index,item);
+        }
     }
+}
+
+for(var i = LeaveWordsItemList.length; i < leavewordscount;i++){
+    if(localStorage.getItem("leavewords" + i)){
+        localStorage.removeItem("leavewords" + i)
+    }
+}
+
+// 创建一个对象用于存储留言
+function LeaveWordsObj(name,gender,grade,content,date){
+    this.name = name;
+    this.gender = gender;
+    this.grade = grade;
+    this.content = content;
+    this.flag = 1; // 用于判断留言是否已经删除
+    if(date){
+        this.date = date;
+    }else{
+        this.date = new Date();
+        this.date = this.date.getFullYear() + "/" + this.date.getMonth() + "/" +this.date.getDate() + "";
+    }
+
+    this.viewContent = document.createElement('div');
+    this.viewContent.className = "LeaveWordsBlock";
+    this.viewContent.index = -1;
+    LeaveWordsAreaMain.appendChild(this.viewContent)                                               
     
+    this.owner = document.createElement('div');
+    this.owner.className = "LeaveWordsBlockOwner";
+    this.owner.textContent = name + "--" + gender + "--" + grade + "--" + this.date + ":";
+    this.viewContent.appendChild(this.owner)
+
+    this.txt = document.createElement("div");
+    this.txt.className = "LeaveWordsBlockTxt";
+    this.txt.textContent = content + "";
+    this.viewContent.appendChild(this.txt);
+
+
+    this.btn = document.createElement('span');
+    this.btn.className = "LeaveWordsBlockBtn";
+    this.btn.textContent = "删除";
+    this.btn.index = -1;
+    this.btn.onclick = LeaveWordsBlockDel;
+    this.txt.appendChild(this.btn);
+}
+
+// 留言删除事件
+function LeaveWordsBlockDel(){
+    LeaveWordsItemList[this.index].flag = 0;
+    let item = JSON.stringify(LeaveWordsItemList[this.index]);
+    localStorage.setItem("leavewords"+this.index,item)
+    LeaveWordsItemList[this.index].viewContent.remove();
+}
+
+// 表单提交事件
+LeaveWordsSubBtn.onclick = function(){
+    var LeaveWordsItem = new LeaveWordsObj(document.LeaveWords.name.value,document.LeaveWords.gender.value,document.LeaveWords.grade.value,document.LeaveWords.content.value);
+    LeaveWordsItemList.push(LeaveWordsItem);
+    LeaveWordsItem.btn.index = LeaveWordsItemList.length - 1;
+    LeaveWordsItem.viewContent.index = LeaveWordsItemList.length - 1;
+    
+    // 存入local storage
+    let item =JSON.stringify(LeaveWordsItem);
+    localStorage.setItem("leavewords" + LeaveWordsItem.btn.index,item);
+    
+    // 存入这个长度
+    leavewordscount = LeaveWordsItemList.length;
+    localStorage.setItem("leavewordscount",leavewordscount);
+}
+
+// 筛选
+LeaveWordsSelectBtn.onclick = function(){
+    let gender = document.LeaveWordsSelect.gender.value;
+    let grade = document.LeaveWordsSelect.grade.value;
+    alert(gender + grade)
+
+    if(gender == "所有"){
+        if(grade == "所有"){
+            LeaveWordsAreaMain.innerHTML = "";
+            for(var i = 0 ;i < LeaveWordsItemList.length;i++){
+                if(LeaveWordsItemList[i].flag == 1){
+                    LeaveWordsAreaMain.appendChild(LeaveWordsItemList[i].viewContent);
+                }
+            }
+        }else{
+            LeaveWordsAreaMain.innerHTML = "";
+            for(var i = 0 ;i < LeaveWordsItemList.length;i++){
+                if(LeaveWordsItemList[i].flag == 1 && LeaveWordsItemList[i].grade == grade){
+                    LeaveWordsAreaMain.appendChild(LeaveWordsItemList[i].viewContent);
+                }
+            }
+        }
+    }else{
+        if(grade == "所有"){
+            LeaveWordsAreaMain.innerHTML = "";
+            for(var i = 0 ;i < LeaveWordsItemList.length;i++){
+                if(LeaveWordsItemList[i].flag == 1 && LeaveWordsItemList[i].gender == gender){
+                    LeaveWordsAreaMain.appendChild(LeaveWordsItemList[i].viewContent);
+                }
+            }
+        }else{
+            LeaveWordsAreaMain.innerHTML = "";
+            for(var i = 0 ;i < LeaveWordsItemList.length;i++){
+                if(LeaveWordsItemList[i].flag == 1 && LeaveWordsItemList[i].gender == gender && LeaveWordsItemList[i].grade == grade){
+                    LeaveWordsAreaMain.appendChild(LeaveWordsItemList[i].viewContent);
+                }
+            }
+        }
+    }
 }

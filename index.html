@@ -21,6 +21,7 @@
 
 
     <div class="main">
+        <!-- 左侧导航栏 -->
         <div class="aside-left">
             <!-- 左侧的个人信息 -->
             <div class="PersonalProfile left-item">
@@ -60,7 +61,7 @@
         
         
         <!-- 中间 -->
-        <div class="center">
+        <div class="center" >
             <!-- 个人介绍 -->
             <div class="introduce center-item">
                 <div class="topic">
@@ -123,7 +124,48 @@
             </div>
         </div>
 
-        
+        <!-- 留言板 -->
+        <div class="LeaveWordsArea" style="display:none">
+            <div class="LeaveWordsTop">
+                <span class="title">留言板</span>
+                <form action="" name = "LeaveWordsSelect" id="LeaveWordsSelect">
+                    <select name="gender" class="gender">
+                        <option value="所有">所有</option>
+                        <option value="男">男 </option>
+                        <option value="女">女</option>
+                    </select>
+                    <select name="grade" class="grade">
+                        <option value="所有">所有</option>
+                        <option value="大一">大一</option>
+                        <option value="大二">大二</option>
+                        <option value="大三">大三</option>
+                        <option value="大四">大四</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <input type="button" class="submit" value="确认">
+                </form>
+            </div>
+            <div class="LeaveWordsMain">
+            </div>
+            <div class="LeaveWordsbottom">
+                <form action="" id="LeaveWords" name="LeaveWords">
+                    <textarea name="content" id="" cols="30" rows="10" class="content" placeholder="请输入你的留言内容"></textarea>
+                    <input type="text" placeholder="请输入你的名字" class="name" name="name">
+                    <select name="gender" class="gender">
+                        <option value="男">男 </option>
+                        <option value="女">女</option>
+                    </select>
+                    <select name="grade" class="grade">
+                        <option value="大一">大一</option>
+                        <option value="大二">大二</option>
+                        <option value="大三">大三</option>
+                        <option value="大四">大四</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <input type="button" class="submit" value="确认">
+                </form>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="./index.js"></script>

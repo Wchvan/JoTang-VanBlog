@@ -409,3 +409,121 @@ body{
 .main .center .todo-list .list ul li::before{
     content: "----  ";
 }
+
+/* 留言板 */
+.LeaveWordsArea{
+    margin-left: 500px;
+    align-items: center;
+    background-color: #121212;
+    border-radius: 5em;
+    opacity: 0.8;
+    width: 850px;
+    height: 1000px;
+    position: relative;
+    color: #fff;
+}
+
+.LeaveWordsArea .LeaveWordsTop .title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 3em;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+#LeaveWordsSelect{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 200px;
+}
+
+#LeaveWordsSelect select{
+    width: 50px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+}
+
+#LeaveWordsSelect .submit{
+    width: 50px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#LeaveWords{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#LeaveWords .content{
+    width: 800px;
+    margin-left: 7px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#LeaveWords .name{
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#LeaveWords select{
+    width: 50px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+}
+
+#LeaveWords .submit{
+    width: 50px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.LeaveWordsArea .LeaveWordsMain{
+    overflow: auto;
+    height: 650px;
+}
+
+.LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockOwner{
+    margin-left: 10px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockTxt{
+    font-size: 18px;
+    line-height: 22px;
+    margin: 10px 25px;
+    color: #fff;
+}
+
+.LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockTxt  .LeaveWordsBlockBtn{
+    float: right;
+    padding-right: 10px;
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
