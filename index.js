@@ -36,6 +36,7 @@ LeaveWordsBtn.onclick = function(){
 }
 
 
+
 /* 选取主题 */
 ThemeBtn1.onclick = function(){
     ThemeFlag  = 0;
@@ -47,10 +48,10 @@ ThemeBtn1.onclick = function(){
     for(var i = 0; i < LeftItems.length ;i ++){
         LeftItems[i].style.background = 'rgba(18,18,18,0.8)';
     }
-    StudyshowPassageArea.style.background = 'rgba(18,18,18,0.8)';
+    if(StudyshowPassageArea){
+        StudyshowPassageArea.style.background = 'rgba(18,18,18,0.8)';
+    }
     LeaveWordsArea.style.backgroundColor  = 'rgba(18,18,18,0.8)';
-    
-    
 }
 
 ThemeBtn2.onclick = function(){
@@ -63,9 +64,10 @@ ThemeBtn2.onclick = function(){
     for(var i = 0; i < LeftItems.length ;i ++){
         LeftItems[i].style.background = 'rgba(193,76,59,0.8)';
     }
+    if(StudyshowPassageArea){
     StudyshowPassageArea.style.background = 'rgba(193,76,59,0.8)';
-    LeaveWordsArea.style.background = 'rgba(193,76,59,0.8)';
-    
+    }
+    LeaveWordsArea.style.backgroundColor  = 'rgba(193,76,59,0.8)';
 }
 
 ThemeBtn3.onclick = function(){
@@ -78,8 +80,11 @@ ThemeBtn3.onclick = function(){
     for(var i = 0; i < LeftItems.length ;i ++){
         LeftItems[i].style.background = 'rgba(110, 86, 76, 0.8)';
     }
-    StudyshowPassageArea.style.background = 'rgba(110, 86, 76, 0.8)';
-    LeaveWordsArea.style.background = 'rgba(110, 86, 76, 0.8)';
+    if(StudyshowPassageArea){
+        StudyshowPassageArea.style.background = 'rgba(110, 86, 76, 0.8)';
+    }
+    
+    LeaveWordsArea.style.backgroundColor= 'rgba(110, 86, 76, 0.8)';
     
 }
 
@@ -524,48 +529,48 @@ LeaveWordsSubBtn.onclick = function(){
         return ;
     }else{
         if(number.substr(0,4) != '2019' && number.substr(0,4) != '2020' && number.substr(0,4) != '2021' && number.substr(0,4) != '2022'){
-            alert("你输错了学号！1")
+            alert("你输错了学号！")
             return ;
         }
         if(number.substr(0,4) == '2019' && grade != "大四"){
-            alert("你输错了学号！2")
+            alert("你输错了学号！")
             return ;
         }
         if(number.substr(0,4) == '2020' && grade != "大三"){
-            alert("你输错了学号！3")
+            alert("你输错了学号！")
             return ;
         }
         if(number.substr(0,4) == '2021' && grade != "大二"){
-            alert("你输错了学号！4")
+            alert("你输错了学号！")
             return ;
         }
         if( number.substr(0,4) == '2022' && grade != "大一"){
-            alert("你输错了学号！5")
+            alert("你输错了学号！")
             return ;
         }
 
         if(number.substr(4,2) != '09'){
-            alert("你输错了学号！6")
+            alert("你输错了学号！")
             return ;
         }
 
         if(number.substr(6,2) != '09' && number.substr(6,2) != '12' && number.substr(6,2) != '16'){
-            alert("你输错了学号！7")
+            alert("你输错了学号！")
             return ;
         }
 
         if(number.substr(6,2) == '09' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 30 )){
-            alert("你输错了学号！8")
+            alert("你输错了学号！")
             return ;
         }
 
         if(number.substr(6,2) == '12' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 3)){
-            alert("你输错了学号！9")
+            alert("你输错了学号！")
             return ;
         }
 
         if( number.substr(6,2) == '16'&& (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 6 ) && grade != "大一"){
-            alert("你输错了学号！10")
+            alert("你输错了学号！")
             return ;
         }
     }
