@@ -242,6 +242,17 @@ function StudyshowPassageObj(topic,content,date){
 
 // 每次表单提交后的事件
 StudyshowSubmitBtn.onclick = function(){
+
+    if(document.StudyshowSubmit.topic.value == ''){
+        alert("请输入标题")
+        return ;
+    }
+
+    if(document.StudyshowSubmit.content.value == ''){
+        alert("请输入内容")
+        return ;
+    }
+
     // 创立学习记录
     var StudyshowPassageItem = new StudyshowPassageObj(document.StudyshowSubmit.topic.value,document.StudyshowSubmit.content.value);
     // 存进学习记录的数组
@@ -523,57 +534,91 @@ LeaveWordsSubBtn.onclick = function(){
     let content = document.LeaveWords.content.value;
     let number = document.LeaveWords.number.value;
 
+    if(name == ""){
+        alert("请输入你的名字")
+        return ;
+    }
+
+    if(content == ""){
+        alert("请输入你的留言内容")
+        return ;
+    }
+
     // 验证操作 2021091202009
-    if(number.length != 13){
+    r = "202[0-2]|2019\\09\\120[1-3]|090[1-9]|09[1-2][0-9]|0930|16[1-6]\\^\d{3}$"
+    r1 = "202209\\120[1-3]|090[1-9]|09[1-2][0-9]|0930|16[1-6]\\^\d{3}$"
+    r2 = "09\\120[1-3]|090[1-9]|09[1-2][0-9]|0930|\\^\d{3}$"
+    if(!number.match(r)){
         alert("你输错了学号！")
         return ;
     }else{
-        if(number.substr(0,4) != '2019' && number.substr(0,4) != '2020' && number.substr(0,4) != '2021' && number.substr(0,4) != '2022'){
+        if(grade == "大一" && !number.match(r1)){
             alert("你输错了学号！")
             return ;
         }
-        if(number.substr(0,4) == '2019' && grade != "大四"){
+        if(grade == "大二" && !number.match('2021' + r2)){
             alert("你输错了学号！")
             return ;
         }
-        if(number.substr(0,4) == '2020' && grade != "大三"){
+        if(grade == "大三" && !number.match('2020' + r2)){
             alert("你输错了学号！")
             return ;
         }
-        if(number.substr(0,4) == '2021' && grade != "大二"){
-            alert("你输错了学号！")
-            return ;
-        }
-        if( number.substr(0,4) == '2022' && grade != "大一"){
-            alert("你输错了学号！")
-            return ;
-        }
-
-        if(number.substr(4,2) != '09'){
-            alert("你输错了学号！")
-            return ;
-        }
-
-        if(number.substr(6,2) != '09' && number.substr(6,2) != '12' && number.substr(6,2) != '16'){
-            alert("你输错了学号！")
-            return ;
-        }
-
-        if(number.substr(6,2) == '09' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 30 )){
-            alert("你输错了学号！")
-            return ;
-        }
-
-        if(number.substr(6,2) == '12' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 3)){
-            alert("你输错了学号！")
-            return ;
-        }
-
-        if( number.substr(6,2) == '16'&& (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 6 ) && grade != "大一"){
+        if(grade == "大四" && !number.match('2019' + r2)){
             alert("你输错了学号！")
             return ;
         }
     }
+    // if(number.length != 13){
+    //     alert("你输错了学号！")
+    //     return ;
+    // }else{
+    //     if(number.substr(0,4) != '2019' && number.substr(0,4) != '2020' && number.substr(0,4) != '2021' && number.substr(0,4) != '2022'){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+    //     if(number.substr(0,4) == '2019' && grade != "大四"){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+    //     if(number.substr(0,4) == '2020' && grade != "大三"){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+    //     if(number.substr(0,4) == '2021' && grade != "大二"){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+    //     if( number.substr(0,4) == '2022' && grade != "大一"){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+
+    //     if(number.substr(4,2) != '09'){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+
+    //     if(number.substr(6,2) != '09' && number.substr(6,2) != '12' && number.substr(6,2) != '16'){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+
+    //     if(number.substr(6,2) == '09' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 30 )){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+
+    //     if(number.substr(6,2) == '12' && (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 3)){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+
+    //     if( number.substr(6,2) == '16'&& (parseInt(number.substr(8,2))  < 0 || parseInt(number.substr(8,2)) > 6 ) && grade != "大一"){
+    //         alert("你输错了学号！")
+    //         return ;
+    //     }
+    // }
 
     var LeaveWordsItem = new LeaveWordsObj(name,gender,grade,content);
     LeaveWordsItemList.push(LeaveWordsItem);
