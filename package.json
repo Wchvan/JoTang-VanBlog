@@ -1,0 +1,23 @@
+{
+  "name": "van-blog",
+  "version": "1.0.0",
+  "description": "Node.js 测试",
+  "main": "index.html",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wchvan/VanBlog.git"
+  },
+  "keywords": [
+    "test",
+    "blog"
+  ],
+  "author": "Van",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wchvan/VanBlog/issues"
+  },
+  "homepage": "https://github.com/Wchvan/VanBlog#readme"
+}
