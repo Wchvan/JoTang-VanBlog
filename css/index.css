@@ -511,6 +511,8 @@ body{
     font-size: 18px;
     line-height: 22px;
     margin: 10px 25px;
+    overflow: auto;
+    word-break: break-all;
 }
 
 .LeaveWordsArea .LeaveWordsMain .LeaveWordsBlock .LeaveWordsBlockTxt  .LeaveWordsBlockBtn{
