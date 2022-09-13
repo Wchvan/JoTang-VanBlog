@@ -13,6 +13,7 @@ var ThemeBtn1 = document.querySelector(".ThemeColor .origin")
 var ThemeBtn2 = document.querySelector(".ThemeColor .black")
 var ThemeBtn3 = document.querySelector(".ThemeColor .white")
 
+
 // 通用函数
 $(document).ready(function(){
     $("input").focus(function(){
@@ -27,28 +28,34 @@ $(document).ready(function(){
       $("textarea").blur(function(){
         $(this).css("background-color","#ffffff");
       });
+      
 })
 
 
 /* 返回首页 */
 HomeBtn.onclick = function(){
-    LeaveWordsArea.style.display = 'none';
+    // LeaveWordsArea.style.display = 'none';
     if(StudyshowPassageArea){
         StudyshowPassageArea.remove();
     }
-    for(var i = 0; i < CenterItems.length;i++){
-        CenterItems[i].style.display = 'block';
-    }
-    Center[0].style.display = 'block';
+    // for(var i = 0; i < CenterItems.length;i++){
+    //     CenterItems[i].style.display = 'block';
+    // }
+    $(".LeaveWordsArea").fadeOut();
+    $(".center").css("display","block");
+    $(".center-item").fadeIn();
 }
 
 /* 打开留言板页面 */
 LeaveWordsBtn.onclick = function(){
-    LeaveWordsArea.style.display = 'block';
-    Center[0].style.display  = 'none';
     if(StudyshowPassageArea){
         StudyshowPassageArea.remove();
     }
+    
+    $(".center-item").fadeOut();
+    $(".center").css("display","none");
+    $(".LeaveWordsArea").fadeIn();
+    
 }
 
 
@@ -296,12 +303,14 @@ function StudyshowPassageItemClick(){
     // 把右侧区域隐藏除了头部 
     LeaveWordsArea.style.display = 'none';
     Center[0].style.display = 'block';
+
     for(var i = 1;i < CenterItems.length;i++){
         CenterItems[i].style.display = 'none';
         if(StudyshowPassageArea){
             StudyshowPassageArea.remove()
         }
     }
+
 
     // 选择当前的文章对象
     var StudyshowPassageItemSelected = StudyshowPassageItemList[this.index];
