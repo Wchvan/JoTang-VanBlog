@@ -41,9 +41,10 @@ HomeBtn.onclick = function(){
     // for(var i = 0; i < CenterItems.length;i++){
     //     CenterItems[i].style.display = 'block';
     // }
-    $(".LeaveWordsArea").fadeOut();
-    $(".center").css("display","block");
-    $(".center-item").fadeIn();
+    $(".LeaveWordsArea").fadeOut(500,function(){
+        $(".center").css("display","block");
+    });
+    $(".center-item").fadeIn(500);
 }
 
 /* 打开留言板页面 */
@@ -52,9 +53,10 @@ LeaveWordsBtn.onclick = function(){
         StudyshowPassageArea.remove();
     }
     
-    $(".center-item").fadeOut();
-    $(".center").css("display","none");
-    $(".LeaveWordsArea").fadeIn();
+    $(".center-item").fadeOut(500 ,function(){
+        $(".center").css("display","none");
+    });
+    $(".LeaveWordsArea").fadeIn(500);
     
 }
 
