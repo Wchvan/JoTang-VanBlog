@@ -13,6 +13,22 @@ var ThemeBtn1 = document.querySelector(".ThemeColor .origin")
 var ThemeBtn2 = document.querySelector(".ThemeColor .black")
 var ThemeBtn3 = document.querySelector(".ThemeColor .white")
 
+// 通用函数
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color","#eaeaef");
+      });
+      $("input").blur(function(){
+        $(this).css("background-color","#ffffff");
+      });
+      $("textarea").focus(function(){
+        $(this).css("background-color","#eaeaef");
+      });
+      $("textarea").blur(function(){
+        $(this).css("background-color","#ffffff");
+      });
+})
+
 
 /* 返回首页 */
 HomeBtn.onclick = function(){
