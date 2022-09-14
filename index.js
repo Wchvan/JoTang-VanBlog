@@ -66,7 +66,8 @@ LeaveWordsBtn.onclick = function(){
 ThemeBtn1.onclick = function(){
     ThemeFlag  = 0;
     Body.style.color = "#fff";
-    Body.style.background = "url(./img/bg.png) no-repeat fixed"
+    Body.style.background = "url(./img/bg1.png) no-repeat fixed "
+    Body.style.backgroundSize = "100% 100%"
     for(var i = 0; i < CenterItems.length ;i ++){
         CenterItems[i].style.background = 'rgba(18,18,18,0.8)';
     }
@@ -81,35 +82,37 @@ ThemeBtn1.onclick = function(){
 
 ThemeBtn2.onclick = function(){
     ThemeFlag = 1;
-    Body.style.color = "#4f92e0";
-    Body.style.background = " #121212 no-repeat fixed"
+    Body.style.color = "#999";
+    Body.style.background = "url(./img/bg2.png) no-repeat fixed "
+    Body.style.backgroundSize = "100% 100%"
     for(var i = 0; i < CenterItems.length ;i ++){
-        CenterItems[i].style.background = 'rgba(193,76,59,0.8)';
+        CenterItems[i].style.background = 'rgba(18,18,18)';
     }
     for(var i = 0; i < LeftItems.length ;i ++){
-        LeftItems[i].style.background = 'rgba(193,76,59,0.8)';
+        LeftItems[i].style.background = 'rgba(18,18,18)';
     }
     if(StudyshowPassageArea){
-    StudyshowPassageArea.style.background = 'rgba(193,76,59,0.8)';
+    StudyshowPassageArea.style.background = 'rgba(18,18,18)';
     }
-    LeaveWordsArea.style.backgroundColor  = 'rgba(193,76,59,0.8)';
+    LeaveWordsArea.style.backgroundColor  = 'rgba(18,18,18)';
 }
 
 ThemeBtn3.onclick = function(){
     ThemeFlag = 2;
     Body.style.color = "#121212";
-    Body.style.background = " #639a72 no-repeat fixed"
+    Body.style.background = " url(./img/bg3.png) no-repeat fixed"
+    Body.style.backgroundSize = "100% 100%"
     for(var i = 0; i < CenterItems.length ;i ++){
-        CenterItems[i].style.background = 'rgba(110, 86, 76, 0.8)';
+        CenterItems[i].style.background = 'rgba(61 ,77, 41,1)';
     }
     for(var i = 0; i < LeftItems.length ;i ++){
-        LeftItems[i].style.background = 'rgba(110, 86, 76, 0.8)';
+        LeftItems[i].style.background = 'rgba(61 ,77, 41,1)';
     }
     if(StudyshowPassageArea){
-        StudyshowPassageArea.style.background = 'rgba(110, 86, 76, 0.8)';
+        StudyshowPassageArea.style.background = 'rgba(61 ,77, 41,1)';
     }
     
-    LeaveWordsArea.style.backgroundColor= 'rgba(110, 86, 76, 0.8)';
+    LeaveWordsArea.style.backgroundColor= 'rgba(61 ,77, 41,1)';
     
 }
 

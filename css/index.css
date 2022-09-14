@@ -3,7 +3,7 @@
 /* 公用样式 */
 
 body{
-    background: url(../img/bg.png) no-repeat fixed;
+    background: url(../img/bg1.png) no-repeat fixed;
     background-size: 100% 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif!important ;
     color: #fff
@@ -12,7 +12,7 @@ body{
 .aside-left{
     width:260px;
     margin-right: 20px;
-    margin-left: 200px;
+    margin-left: 250px;
     float: left;
 }
 
@@ -30,7 +30,7 @@ body{
 }
 
 .main .center{
-    margin-left: 500px;
+    margin-left: 600px;
     align-items: center;
 }
 
@@ -52,10 +52,9 @@ body{
     height: 50px;
     background-color: #121212;
     opacity: 0.8;
-    border-radius: 5px;
     clear: both;
     overflow: hidden;
-    min-width: 1500px;
+    min-width: 1600px;
     margin-bottom: 70px;
     position: relative;
 }
@@ -130,7 +129,7 @@ body{
 .main .aside-left .PersonalProfile .content ul li span{
     font-size: 18px;
     text-align: center;
-    color: #999;
+    /* color: #999; */
 }
 
 /* 主区域左侧个人介绍结束 */
