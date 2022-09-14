@@ -12,7 +12,7 @@ body{
 .aside-left{
     width:260px;
     margin-right: 20px;
-    margin-left: 250px;
+    margin-left: 170px;
     float: left;
 }
 
@@ -30,7 +30,7 @@ body{
 }
 
 .main .center{
-    margin-left: 600px;
+    margin-left: 500px;
     align-items: center;
 }
 
@@ -54,7 +54,7 @@ body{
     opacity: 0.8;
     clear: both;
     overflow: hidden;
-    min-width: 1600px;
+    min-width: 1500px;
     margin-bottom: 70px;
     position: relative;
 }
