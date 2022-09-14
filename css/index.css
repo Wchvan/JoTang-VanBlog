@@ -71,6 +71,7 @@ body{
 
 .header .top .TopItem1{
     left: 25px;
+    text-shadow: 5px 5px 5px #ff0000;
 }
 
 .header .top .TopItem2{
